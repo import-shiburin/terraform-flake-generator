@@ -40,6 +40,14 @@ fn main() -> Result<()> {
     let requested_version = args.version.or(args.version_flag);
     let verbose = args.verbose;
 
+    if verbose {
+        if args.github_token.is_some() {
+            println!("Using GitHub token for API access");
+        } else {
+            println!("No GitHub token set (rate limit: 60 req/hr). Set GITHUB_TOKEN for 5,000 req/hr.");
+        }
+    }
+
     // Step 1: Extract required_version from .tf files
     let constraint_str = hcl::extract_required_version(&dir)?;
     println!("Constraint: {}", constraint_str);
