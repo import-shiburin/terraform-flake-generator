@@ -13,11 +13,11 @@
         muslPkgs = pkgs.pkgsCross.musl64;
       in
       {
-        packages.default = (muslPkgs.callPackage ./default.nix { }).overrideAttrs {
+        packages.default = pkgs.callPackage ./default.nix { };
+
+        packages.static = (muslPkgs.callPackage ./default.nix { }).overrideAttrs {
           RUSTFLAGS = "-C target-feature=+crt-static";
         };
-
-        packages.tfg = pkgs.callPackage ./default.nix { };
 
         devShells.default = pkgs.mkShell {
           buildInputs = [
