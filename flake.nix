@@ -35,5 +35,6 @@
       nixosModules.default = import ./nix/nixos-module.nix self;
 
       homeManagerModules.default = import ./nix/hm-module.nix self;
+      homeModules.default = import ./nix/hm-module.nix self;
     };
 }
