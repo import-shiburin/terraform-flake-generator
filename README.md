@@ -8,6 +8,21 @@ dev shell via flake-parts.
 
 ## Installation
 
+### Prebuilt binaries
+
+Download a binary for your platform from the
+[Releases](https://github.com/import-shiburin/terraform-flake-generator/releases)
+page. Each release includes an `.md5` checksum file you can verify with:
+
+```
+md5sum -c tfg-<target>.md5
+```
+
+Available targets: `x86_64-unknown-linux-musl`, `aarch64-unknown-linux-musl`,
+`x86_64-apple-darwin`, `aarch64-apple-darwin`.
+
+### Nix
+
 With Nix (static musl binary):
 
 ```
