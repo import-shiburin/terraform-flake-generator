@@ -70,6 +70,22 @@ The binary lands at `target/release/tfg`.
 }
 ```
 
+### GitHub token file (NixOS / Home Manager)
+
+Both modules accept a `githubTokenFile` option. When set, the binary is
+wrapped so that `GITHUB_TOKEN` is read from the file at runtime. The value
+is a string, so shell variables are expanded at runtime. This works well
+with secret managers like sops-nix or agenix:
+
+```nix
+programs.tfg = {
+  enable = true;
+  githubTokenFile = config.sops.secrets.github-token.path; # sops-nix
+  # githubTokenFile = config.age.secrets.github-token.path; # agenix
+  # githubTokenFile = "\${XDG_RUNTIME_DIR}/agenix/github-token"; # path with shell variable
+};
+```
+
 ### Overlay
 
 ```nix
