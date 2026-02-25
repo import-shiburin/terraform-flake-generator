@@ -74,8 +74,7 @@ The binary lands at `target/release/tfg`.
 
 Both modules accept a `githubTokenFile` option. When set, the binary is
 wrapped so that `GITHUB_TOKEN` is read from the file at runtime. The value
-is a string, so shell variables are expanded at runtime. This works well
-with secret managers like sops-nix or agenix:
+is a string, so shell variables are expanded at runtime.
 
 ```nix
 programs.tfg = {
